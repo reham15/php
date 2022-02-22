@@ -54,7 +54,7 @@ function write_to_file($email,$name)
     $ip = $_SERVER['REMOTE_ADDR'];  
     echo " $ip";
     $myfile = fopen("log.txt", "a+");
-    $text="$today , $ip ,$email,$name \r\n ";
+    $text="$today , $ip ,$email,$name \r\n";
      fwrite($myfile,  $text);
      fclose($myfile);
     

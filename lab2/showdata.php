@@ -1,8 +1,8 @@
 <?php
 $content=file("log.txt");
 foreach($content as $line)
-{  $line=trim($line,"\n");
-   $var=explode(",", $line );
+{  if(!empty($line))
+  { $var=explode(",", $line );
     echo"<center>";
     echo "<div>";
   echo " visit date : $var[0]  $var[1] $var[2] <br>";
@@ -11,6 +11,7 @@ foreach($content as $line)
   echo "name:  $var[5]   <br>";
     echo "</div>";
     echo "------------------------------------------------------------------------------";
-    echo"</center>";
+    echo"</center>";}
+
 
 }
