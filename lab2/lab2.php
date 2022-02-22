@@ -3,17 +3,7 @@ include('config.php');
 
 $messeeges=array();
  
-function write_to_file()
-{ $today = date("F j, Y, g:i a"); 
-    echo "$today ";  
-    $ip = $_SERVER['REMOTE_ADDR'];  
-    echo " $ip";
-    $myfile = fopen("log.txt", "a+", true);
-     fwrite($myfile, $today);
-     fclose($myfile);
-    
-    
-}
+
 if(isset($_POST["submit"]) )
 
 {  
@@ -32,13 +22,13 @@ if(isset($_POST["submit"]) )
     else 
     $flag++;
 
- if(empty($_POST["message"]) ||  (strlen($message)>$messg_length))
+ if(empty($_POST["message"]) ||  (strlen($messege)>$messg_length))
  $messeeges[]="unvalid message";
  else 
     $flag++;
  if( $flag===3)
  {$sucess="sucess name is $name  $email  $messege";
- write_to_file();}
+ write_to_file($email,$name);}
 
 
 foreach( $messeeges as $line)  
@@ -57,6 +47,18 @@ function default_text($text)
    }
   
 
+}
+function write_to_file($email,$name)
+{ $today = date("F j, Y, g:i a"); 
+    echo "$today ";  
+    $ip = $_SERVER['REMOTE_ADDR'];  
+    echo " $ip";
+    $myfile = fopen("log.txt", "a+");
+    $text="$today , $ip ,$email,$name \r\n ";
+     fwrite($myfile,  $text);
+     fclose($myfile);
+    
+    
 }
 
 
